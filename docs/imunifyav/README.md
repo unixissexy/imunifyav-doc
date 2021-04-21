@@ -642,13 +642,19 @@ Tick the _Enable Sentry error reporting_ checkbox to send reports to ImunifyAV e
 Starting from ImunifyAV(+) v. 5.5, all filter and view options are stored in the browser's local storage so you can select filter preference options once and next time you'll open the tab, the options will be preset.
 :::
 
-### Upgrade <Badge text="AV" />
+### Upgrade
 
-To upgrade to ImunifyAV+ click _Upgrade Imunify_ button, upgrade page opens.
+To upgrade to ImunifyAV+/Imunify360, click the _Upgrade Imunify_ button. The upgrade page opens.
 
-![](/images/avhosterupgrade_zoom70.png)
+![](/images/UpgradeAndActivatePage.png)
 
 To upgrade, click _Buy Now_ button, you will be redirected to the purchase page. Or activate the product using an activation key if you already have one.
+
+Resellers can configure their own upgrade URLs:
+
+![](/images/ResellersCustomURLs.png)
+
+These options are controlled by `CUSTOM_BILLING.upgrade_url` and `CUSTOM_BILLING.upgrade_url_360` settings accordingly.
 
 ## End User Interface
 
