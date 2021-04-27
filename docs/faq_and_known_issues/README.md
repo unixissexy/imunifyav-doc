@@ -154,3 +154,12 @@ To disable the "Start scanning" button, run the following command:
 # imunify-antivirus config update '{"PERMISSIONS": {"allow_malware_scan": false}}'
 ```
 
+### Our customers are getting emails about infections. How can we disable that? The "Notify on website infection via email" setting is already disabled
+
+Try to switch off the "Send notifications" option in the "Users" menu as shown on the screenshot below:
+
+![](/images/SendNotifications.png)
+
+:::tip Note
+Please note that the "Adjust alert" parameter prevents the user from changing the notification settings.
+:::
