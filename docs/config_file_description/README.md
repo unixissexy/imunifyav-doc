@@ -26,6 +26,8 @@ In the config file it is possible to set up ImunifyAV(+) configuration. The foll
 <td># speeds up (<span class="notranslate">True</span>) (default value) ot not (<span class="notranslate">False</span>) repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan.</td></tr>
 <tr><td><span class="notranslate">rapid_scan_rescan_unchanging_files_frequency: null</span></td>
 <td># defines what part of all files will be rescanned during each scan. For example, if set 10 then 1/10 part of all files will be rescanned. The default value `null` - means "choose frequency based on scan schedule". E.g. month - 1, week - 5, day - 10.</td></tr>
+<tr><td><span class="notranslate">hyperscan: False</span></td>
+<td># allows to use (True) the regex matching HyperScan library in Malware Scanner to greatly improve the scanning speed. False is the default value. HyperScan requires its own signatures set that will be downloaded from the files.imunify360.com and compiled locally.<br><b>Platform requirements</b>:<br>* HyperScan supports Debian, Ubuntu and CentOS/CloudLinux 7 and later.<br>* SSE3 processor instructions support. It is quite common nowadays, but may be lacking in virtual environments or in some rather old servers.</td></tr>
 <th colspan="2" align="left"><span class="notranslate">ERROR_REPORTING:</span></th></tr>
 <tr><td><span class="notranslate">enable: True</span></td>
 <td># automatically report errors to the Imunify team</td></tr>
@@ -74,7 +76,7 @@ In the config file it is possible to set up ImunifyAV(+) configuration. The foll
 <td># set CPU consumption limit for ImunifyAV(+) in MB.</td></tr>
 </table>
 
-### How to apply changes from CLI
+## How to apply changes from CLI
 
 In order to apply changes via command-line interface (CLI), you can use the following command:
 
@@ -93,4 +95,53 @@ For example, if you want to set <span class="notranslate">`MALWARE_SCAN_INTENSIT
 imunify-antivirus config update '{"MALWARE_SCAN_INTENSITY": {"cpu": 5}}'
 ```
 </div>
+
+## Overridable config
+
+Starting from ImunifyAV(+) v.5.8, we introduce the overridable config which provides the ability to provision default config for the whole fleet of Imunify servers and keep the ability for fine-tuning each particular server depending on its requirements.
+
+**Configs organization**:
+
+* A new directory for custom configs. The local overrides of the main config are put there: <span class="notranslate">`/etc/sysconfig/imunify360/imunify360.config.d/`</span>
+* The old config <span class="notranslate">`/etc/sysconfig/imunify360/imunify360.config`</span> is now linked to the <span class="notranslate">`imunify360.config.d/90-local.config`</span>. It contains changes made through UI as well as through CLI.
+* Configs in that directory will override the <span class="notranslate">`imunify360-base.config`</span> and each other in lexical order. First-level "sections" (like <span class="notranslate">`FIREWALL`</span>) are merged, while second-level "options" (like <span class="notranslate">`FIREWALL.TCP_IN_IPv4`</span>) are replaced completely.
+
+This way you can keep your local customizations, but still be able to rollout the main config.
+
+The CLI command to check the default configuration before merging with <span class="notranslate">`90-local.config`</span>:
+
+<div class="notranslate">
+
+```
+imunify-antivirus config show defaults
+```
+</div>
+
+Here is an example of custom server configuration:
+
+| | |
+|-|-|
+|<span class="notranslate">`imunify360-base.config`</span><br><br>Provided by Imunify installation. Contains default recommended configuration|<span class="notranslate">`FIREWALL:`</span><br><span class="notranslate">`TCP_IN_IPv4:`</span><br>`- '20'`<br>`- '8880'`<br><span class="notranslate">`port_blocking_mode: ALLOW`</span>|
+|<span class="notranslate">`imunify360.config.d/50-common.config`</span><br><br>Provisioned by server owner to the fleet of servers.|<span class="notranslate">`FIREWALL:`</span><br><span class="notranslate">`TCP_IN_IPv4:`</span><br>`- '20'`<br>`- '21'`<br><span class="notranslate">`port_blocking_mode: DENY`</span>|
+|<span class="notranslate">`imunify360.config.d/90-local.config`</span><br><br>Contains local customization per server individually.|<span class="notranslate">`FIREWALL:`</span><br><span class="notranslate">`TCP_IN_IPv4:`</span><br>`- '20'`<br>`- '22'`<br>`- '12345'`|
+
+The resulting (merged) configuration will look like this:
+
+<div class="notranslate">
+
+```
+FIREWALL:
+  TCP_IN_IPv4:
+  - '20'
+  - '22'
+  - '12345'
+  port_blocking_mode: DENY
+```
+</div>
+
+The mechanics is as follows: first-level "sections" - for example <span class="notranslate">`FIREWALL`</span> are merged, while second-level "options" - for example <span class="notranslate">`FIREWALL.TCP_IN_IPv4`</span> are replaced completely. 
+
+Those who don’t need this type of overridable configs can continue using custom configurations in the <span class="notranslate">`/etc/sysconfig/imunify360/imunify360.config`</span>.
+
+This feature is backward compatible.
 
