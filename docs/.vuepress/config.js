@@ -102,7 +102,8 @@ module.exports = {
         },
         algolia: {
           apiKey: 'd51f82b31c286ce013015a4c00329efc',
-          indexName: 'imunifyavp'
+          indexName: 'imunifyavp',
+          appId: 'C6CXTFLPAJ',
         },
 
         bottomLinks: [
@@ -149,8 +150,9 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: '29339fdc91169afd5a7dd2a0a9bba6d2',
-          indexName: 'imunifyav'
+          apiKey: 'd51f82b31c286ce013015a4c00329efc',
+          indexName: 'imunifyavp',
+          appId: 'C6CXTFLPAJ',
         },
         sidebar: [
           {
