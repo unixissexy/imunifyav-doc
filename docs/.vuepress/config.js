@@ -69,7 +69,7 @@ module.exports = {
     redirectionMapping: urls,
     sidebarDepth: 2,
     logo: "/logo.svg",
-    try_free: "https://www.imunify360.com/antivirus",
+    try_free: "https://trial4.imunify360.com/?utm_campaign=ImunifyAVdocs%20Try%20Imunify360%20button&utm_source=imunifyav&utm_medium=imunifyav&utm_term=imunifyav&utm_content=imunifyav",
 
     social: [
       { url: "https://www.facebook.com/imunify360/", logo: "/fb.png" },
@@ -91,7 +91,7 @@ module.exports = {
         label: "English",
         // text for the edit-on-github link
         editLinkText: "Edit this page",
-        tryFree: "Get Free",
+        tryFree: "Try Imunify360 For Free",
         search: "Search",
         // config for Service Worker
         serviceWorker: {
