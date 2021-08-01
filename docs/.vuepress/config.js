@@ -45,6 +45,7 @@ module.exports = {
   base: "/",
   head: [
     ["link", { rel: "icon", href: "/favicon.ico" }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   ],
   locales: {
     // The key is the path for the locale to be nested under.
