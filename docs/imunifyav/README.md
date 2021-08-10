@@ -597,8 +597,8 @@ Go to ImunifyAV → Settings tab to set up the behaviour of ImunifyAV scanner. H
 * **Automatically send suspicious and malicious files for analysis** – malicious and suspicious files will be sent to the ImunifyAV Team for analysis automatically.
 * **RapidScan** – dramatically speeds up repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan. When you first enable the RapidScan feature, the first scan will run as before. But subsequent scans will see a dramatic speed improvement, anywhere between 5 to 20 times faster. You can find the details here: [https://docs.imunify360.com/features/#rapidscan](https://docs.imunify360.com/features/#rapidscan))
 * **Binary (ELF) malware detection** – this option allows to scans user home directories for malware.
-* **Enable HyperScan <sup>Experimental</sup>** – this option allows to use the regex matching HyperScan library in Malware Scanner to greatly improve the scanning speed. HyperScan requires its own signatures set that will be downloaded from the files.imunify360.com and compiled locally. There are few platform requirements to use this feature:
-  * HyperScan supports Debian, Ubuntu and CentOS/CloudLinux 7 and later.
+* **Enable Hyperscan <sup>Experimental</sup>** – this option allows to use the regex matching Hyperscan library in Malware Scanner to greatly improve the scanning speed. Hyperscan requires its own signatures set that will be downloaded from the files.imunify360.com and compiled locally. There are few platform requirements to use this feature:
+  * Hyperscan supports Debian, Ubuntu and CentOS/CloudLinux 7 and later.
   * SSE3 processor instructions support. It is quite common nowadays, but may be lacking in virtual environments or in some rather old servers.
 
 Tick required checkboxes and click the _Save changes_ button.
