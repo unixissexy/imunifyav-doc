@@ -585,57 +585,53 @@ The general structure of the <span class="notranslate">`imunify-antivirus notifi
 
 ```json
 {
-   "rules": {
-      "USER_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
-      "USER_SCAN_MALWARE_FOUND": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         },
-         "ADMIN": {
-         "admin_emails": [],
-         "enabled": False
-         }
-      },
-      "USER_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
-      "CUSTOM_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
+  "eula": null,
+  "items": {
+    "rules": {
       "CUSTOM_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
       },
       "CUSTOM_SCAN_MALWARE_FOUND": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         },
-         "ADMIN": {
-            "admin_emails": [],
-            "enabled": False
-         }
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
+      },
+      "CUSTOM_SCAN_STARTED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
+      },
+      "USER_SCAN_FINISHED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
+      },
+      "USER_SCAN_MALWARE_FOUND": {
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
+      },
+      "USER_SCAN_STARTED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
       }
-   },
-   "admin": {
-      "notify_from_email": None,
-      "default_emails": []
-   }
-}
+    }
+  },
 ```
 
 </div>
@@ -652,19 +648,14 @@ Rules:
 * <span class="notranslate">CUSTOM_SCAN_MALWARE_FOUND</span> – occurs when the on-demand scanning process has finished and malware found.
 
 
-Admin:
-
-* <span class="notranslate">default_emails</span> – specify the default list of emails used for all enabled admin email notifications.
-* <span class="notranslate">notify_from_email</span> – specify a sender of all emails sent by the Hooks.
-
 **Examples**:
 
-1. Update admin default emails:
+1. Enable "CUSTOM_SCAN_STARTED" triger:
 
 <div class="notranslate">
 
 ```
-imunify-antivirus notifications-config update '{"admin": {"default_emails": ["email1@email.com", "email2@email.com"]}}'
+# imunify-antivirus notifications-config update '{"rules": {"CUSTOM_SCAN_STARTED": {"SCRIPT": {"enabled": true}}}}'
 ```
 </div>
 
@@ -676,61 +667,57 @@ The <span class="notranslate">`imunify-antivirus notifications-config show`</spa
 
 ```json
 {
-   "rules": {
-      "USER_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      }, 
-      "USER_SCAN_MALWARE_FOUND": {
-         "ADMIN": {
-            "admin_emails": [],
-            "enabled": False
-         },
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
-      "CUSTOM_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
-      "USER_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
+  "eula": null,
+  "items": {
+    "rules": {
       "CUSTOM_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
       },
       "CUSTOM_SCAN_MALWARE_FOUND": {
-         "ADMIN": {
-            "admin_emails": [],
-            "enabled": False
-         },
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
+      },
+      "CUSTOM_SCAN_STARTED": {
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": []
+        }
+      },
+      "USER_SCAN_FINISHED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
+      },
+      "USER_SCAN_MALWARE_FOUND": {
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
+      },
+      "USER_SCAN_STARTED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
       }
-   },
-   "admin": {
-      "notify_from_email": None,
-      "default_emails": ["email1@email.com", "email2@email.com"]
-   }
-}
+    }
+  },
 ```
 
 </div>
-
+    
 **More examples**:
 
 2. Run the custom script on the <span class="notranslate">USER_SCAN_FINISHED</span> event occurrence:
@@ -751,57 +738,55 @@ The <span class="notranslate">`imunify-antivirus notifications-config show`</spa
 
 ```json
 {
-   "rules": {
-      "CUSTOM_SCAN_MALWARE_FOUND": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         },
-         "ADMIN": {
-            "enabled": False,
-            "admin_emails": []
-         }
-      },
-      "USER_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
+  "eula": null,
+  "items": {
+    "rules": {
       "CUSTOM_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": [
+            "/root/myhook"
+          ]
+        }
+      },
+      "CUSTOM_SCAN_MALWARE_FOUND": {
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
       },
       "CUSTOM_SCAN_STARTED": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         }
-      },
-      "USER_SCAN_MALWARE_FOUND": {
-         "SCRIPT": {
-            "scripts": [],
-            "enabled": False
-         },
-         "ADMIN": {
-            "enabled": False,
-            "admin_emails": []
-         }
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": []
+        }
       },
       "USER_SCAN_FINISHED": {
-         "SCRIPT": {
-            "scripts": ['/script/my-handler.py'],
-            "enabled": True
-         }
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/script/my-handler.py"
+          ]
+        }
+      },
+      "USER_SCAN_MALWARE_FOUND": {
+        "SCRIPT": {
+          "enabled": true,
+          "scripts": [
+            "/home/myhook"
+          ]
+        }
+      },
+      "USER_SCAN_STARTED": {
+        "SCRIPT": {
+          "enabled": false,
+          "scripts": []
+        }
       }
-   },
-   "admin": {
-      "notify_from_email": None,
-      "default_emails": ["email1@email.com", "email2@email.com"]
-   }
-}
+    }
+  },
 ```
 
 </div>
