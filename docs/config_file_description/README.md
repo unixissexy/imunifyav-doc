@@ -58,7 +58,7 @@ In the config file it is possible to set up ImunifyAV(+) configuration. The foll
 <tr><td><span class="notranslate">emails: youremail@email.com</span></td>
 <td># your email to receive reports about critical issues, security alerts or system misconfigurations detected on your servers.</td></tr>
 <tr><td><span class="notranslate">enable_icontact_notifications: True</span></td>
-<td># receive notifications about malicious activity detected and when malware scan was not performed for not more than once per week. Available for cPanel and cPanel-supported OSes. Default values is True.</td></tr>
+<td># receive notifications about malicious activity detected and when malware scan was not performed for not more than once per week. Available for cPanel and cPanel-supported OSes. Default value is True.</td></tr>
 <tr><th colspan="2" align="left"><span class="notranslate">PERMISSIONS:</span></th></tr>
 <tr><td><span class="notranslate">support_form: True</span></td>
 <td># show (<span class="notranslate">True</span>) (the default value) or hide (<span class="notranslate">False</span>) the Support icon in the ImunifyAV(+) UI.</td></tr>
