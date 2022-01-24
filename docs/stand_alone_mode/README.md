@@ -27,6 +27,22 @@ There are some basic steps to run ImunifyAV as a stand-alone application:
 Imunify Web-UI PHP code has to be executed under a non-root user which has access to `/var/run/defence360agent/non_root_simple_rpc.sock`. If it runs in CageFS, you'll need to configure it accordingly.
 :::
 
+To allow non-root user in CageFS access to the socket, this workaround should be applied:
+
+```sh
+# create directory for moun-point
+mkdir /imunify-ui-shared
+# add symlink for user which belong to UI backend `imunify-web` in this example)
+ln -s /var/run/defence360agent /imunify-ui-shared/imunify-web
+# add symlink to cagefs skeleton
+rm -f /usr/share/cagefs-skeleton/var/run/defence360agent
+ln -s /imunify-ui-shared/imunify-web /usr/share/cagefs-skeleton/var/run/defence360agent
+# add mount point to cagefs
+echo "%/imunify-ui-shared" >> /etc/cagefs/cagefs.mp
+# remount all
+cagefsctl --remount-all
+```
+
 #### How to configure ImunifyAV UI
 
 ImunifyAV UI is implemented as a single-page application (SPA) and requires a web server to serve it. It’s required to specify a path to the web server directory, where the ImunifyAV UI SPA application will be installed and served.
