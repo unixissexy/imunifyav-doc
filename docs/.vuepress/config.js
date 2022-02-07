@@ -103,9 +103,9 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: 'd51f82b31c286ce013015a4c00329efc',
-          indexName: 'imunifyavp',
-          appId: 'C6CXTFLPAJ',
+          apiKey: "e6b9d79daf71aa98e2e2a51d4556f9d4",
+          indexName: "imunifyav-unified",
+          appId: "0TCNL6CGX8"
         },
 
         bottomLinks: [
