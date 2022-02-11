@@ -47,11 +47,11 @@ ImunifyAV provides malware scanning features for cPanel and DirectAdmin control 
 
 ### Requirements
 
-**Operating systems**
+**Supported operating system**
 
 * CentOS/RHEL 6,7,8
 * CloudLinux OS 6,7,8
-* Ubuntu 16.04 (LTS only), 18.04 and 20.04
+* Ubuntu 16.04 (LTS only), 18.04 and 20.04 (LTS)
 * Debian 9 and 10
 
 **Virtualization**
