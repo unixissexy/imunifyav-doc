@@ -62,6 +62,7 @@ ImunifyAV provides malware scanning features for cPanel and DirectAdmin control 
 
 * RAM: 512 Mb
 * HDD: 20 Gb available disk space
+* CPU: 64bit version on x86_64 processors only
 
 **Supported hosting panels**
 
